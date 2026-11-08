@@ -334,27 +334,6 @@ h1 em { font-style: normal; color: var(--ink); }
 .more { margin-top: 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .more li:first-child { font-weight: 700; margin-right: 6px; }
 .more .chip { font-weight: 500; }
-/* gallery of real app screens: a fan on wide screens, a swipeable row on phones */
-#gallery { padding: 110px 0 30px; }
-.gal { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 30px max(20px, calc(50vw - 590px)) 50px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-.gal::-webkit-scrollbar { display: none; }
-.shot { flex: none; width: 236px; margin: 0; scroll-snap-align: center; text-align: center; transition: transform .6s cubic-bezier(.2, .9, .25, 1.05); }
-.shot .frame { position: relative; padding: 7px; border-radius: 40px; background: linear-gradient(160deg, #2a3140, #0b0e15 60%, #1d2330); box-shadow: 0 40px 70px -30px rgba(15, 30, 70, .55), 0 2px 0 rgba(255, 255, 255, .6) inset, 0 0 0 1px rgba(255, 255, 255, .5); }
-.shot .frame::after { content: ""; position: absolute; inset: 7px; border-radius: 33px; pointer-events: none; background: linear-gradient(125deg, rgba(255, 255, 255, .18), transparent 32%); }
-.shot img { display: block; width: 100%; height: auto; border-radius: 33px; }
-.shot figcaption { margin-top: 18px; }
-.shot b { display: block; font-size: 18px; font-weight: 800; letter-spacing: -.02em; }
-.shot figcaption span { display: block; margin-top: 2px; color: var(--muted); font-size: 14px; }
-@media (min-width: 1180px) {
-  .gal { justify-content: center; overflow: visible; padding-top: 50px; }
-  .shot:nth-child(1) { transform: translateY(46px) rotate(-7deg); }
-  .shot:nth-child(2) { transform: translateY(12px) rotate(-3deg); }
-  .shot:nth-child(3) { transform: translateY(-6px) scale(1.06); z-index: 2; }
-  .shot:nth-child(4) { transform: translateY(12px) rotate(3deg); }
-  .shot:nth-child(5) { transform: translateY(46px) rotate(7deg); }
-  .shot:hover { transform: translateY(-18px) scale(1.08); z-index: 3; }
-}
-@media (max-width: 600px) { #gallery { padding-top: 80px; } .shot { width: 72vw; max-width: 270px; } }
 .liveav { width: 92px; height: 92px; border-radius: 50%; padding: 4px; background: conic-gradient(var(--solid), #7a5cff, #ff5ca8, var(--solid)); animation: cl-spin 6s linear infinite; }
 .liveav i { display: block; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0 12%, transparent 13%), linear-gradient(160deg, color-mix(in srgb, var(--solid) 55%, #fff), var(--solid)); animation: cl-spin 6s linear infinite reverse; }
 .stk3 { display: flex; gap: 10px; }
@@ -425,6 +404,48 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
   background: rgba(10, 16, 32, .9); border: 1px solid rgba(255, 255, 255, .16);
 }
 #motionAsk button { border: 0; border-radius: 12px; padding: 8px 14px; background: #1366FF; color: #fff; font-weight: 700; font-size: 14px; cursor: pointer; }
+
+/* ---------- polish: a real device, cleaner glass, calmer rhythm ---------- */
+.glass { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), inset 0 0 0 1px rgba(255, 255, 255, .28), 0 22px 50px -24px rgba(40, 70, 140, .32); }
+h1 em { background: linear-gradient(100deg, var(--ink) 10%, color-mix(in srgb, var(--ink) 45%, #8a5cff) 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+h1 em .ch.enc { -webkit-text-fill-color: var(--cipher); }
+h2 { background: linear-gradient(180deg, var(--fg) 55%, color-mix(in srgb, var(--fg) 70%, var(--ink))); -webkit-background-clip: text; background-clip: text; color: transparent; padding-bottom: .06em; }
+.phone { position: relative; padding: 11px; border-radius: 52px; background: linear-gradient(145deg, #3a4252, #0b0e15 42%, #1e2430 70%, #4a5263); border: 1px solid rgba(255, 255, 255, .45);
+  box-shadow: 0 50px 100px -30px rgba(20, 50, 140, .55), 0 18px 40px -20px rgba(20, 40, 100, .4), inset 0 0 0 2px rgba(0, 0, 0, .55), inset 0 1px 1px rgba(255, 255, 255, .5);
+  -webkit-backdrop-filter: none; backdrop-filter: none; }
+.phone::after { content: ""; position: absolute; right: -3px; top: 132px; width: 3px; height: 64px; border-radius: 0 3px 3px 0; background: linear-gradient(#4b5465, #1a1f29); }
+.screen { border-radius: 42px; }
+.screen::before { content: ""; position: absolute; z-index: 6; top: 11px; left: 50%; width: 96px; height: 28px; margin-left: -48px; border-radius: 16px; background: #05070b; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06); }
+.screen::after { content: ""; position: absolute; inset: 0; z-index: 7; pointer-events: none; border-radius: inherit; background: linear-gradient(120deg, rgba(255, 255, 255, .22), transparent 28%); }
+.chat-top { padding-top: 50px; }
+.daypill { align-self: center; padding: 3px 11px; border-radius: 10px; background: rgba(30, 60, 120, .07); color: var(--muted); font-size: 12px; font-weight: 600; }
+.tile { transition: box-shadow .35s, transform .45s cubic-bezier(.2, .9, .25, 1.05); }
+.tile:hover { transform: translateY(-5px); box-shadow: 0 30px 60px -26px rgba(30, 60, 140, .35); }
+.mark { background: linear-gradient(150deg, color-mix(in srgb, var(--solid) 70%, #fff), var(--solid) 60%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), 0 10px 22px -10px color-mix(in srgb, var(--solid) 70%, transparent); }
+.btn-solid { background: linear-gradient(180deg, color-mix(in srgb, var(--solid) 82%, #fff), var(--solid)); }
+.btn { transition: background-color .25s, box-shadow .25s, border-color .25s, transform .3s cubic-bezier(.3, 1.4, .5, 1); }
+.btn:active { transform: scale(.97); }
+#privacy, #install, #faq { padding-top: clamp(28px, 5vw, 64px) !important; }
+.ledger { border-collapse: separate; border-spacing: 0; overflow: hidden; border-radius: var(--r-m); background: var(--glass); border: 1px solid var(--glass-edge); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), 0 22px 50px -24px rgba(40, 70, 140, .3); -webkit-backdrop-filter: blur(26px) saturate(170%); backdrop-filter: blur(26px) saturate(170%); }
+.ledger th, .ledger td { padding: 18px 20px; }
+.ledger tbody tr:last-child th, .ledger tbody tr:last-child td { border-bottom: 0; }
+.ledger tbody tr { transition: background .2s; }
+.ledger tbody tr:hover { background: rgba(255, 255, 255, .45); }
+.faq { display: grid; gap: 10px; }
+.faq details { border: 1px solid var(--glass-edge); border-radius: 20px; padding: 0 22px; background: var(--glass); -webkit-backdrop-filter: blur(22px) saturate(160%); backdrop-filter: blur(22px) saturate(160%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 12px 30px -20px rgba(40, 70, 140, .25); transition: box-shadow .3s; }
+.faq details[open] { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), 0 22px 44px -22px rgba(40, 70, 140, .35); }
+.faq summary { list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; flex: none; width: 30px; height: 30px; border-radius: 50%; background: color-mix(in srgb, var(--solid) 12%, #fff) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231366FF' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center/16px no-repeat; transition: transform .35s cubic-bezier(.3, 1.4, .5, 1); }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.way { transition: transform .45s cubic-bezier(.2, .9, .25, 1.05), box-shadow .35s; }
+.way:hover { transform: translateY(-5px); }
+.end .mega { background: linear-gradient(100deg, var(--solid), #8a5cff, #ff5ca8, var(--solid)); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: cl-flow 9s ease-in-out infinite alternate; }
+@keyframes cl-flow { to { background-position: 100% 0; } }
+.chipf.a { top: 5%; left: -62%; }
+@media (max-width: 960px) { .chipf.a { top: -3%; left: 0; } }
+footer .wrap { padding-top: 22px; border-top: 1px solid var(--line); }
+@media (prefers-reduced-motion: reduce) { .end .mega { animation: none; } .tile:hover, .way:hover { transform: none; } }
 </style>
 
 </head>
@@ -460,7 +481,6 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
     <a href="#story">Как это работает</a>
     <a href="#features">Возможности</a>
     <a href="#privacy">Приватность</a>
-    <a href="#gallery">Как выглядит</a>
     <a href="#install">Установка</a>
     <a href="#faq">Вопросы</a>
   </nav>
@@ -496,6 +516,9 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
             </div>
             <div class="msgs">
               <p class="e2e">Сообщения защищены сквозным шифрованием: их не прочитает никто, кроме вас, даже сервер</p>
+              <span class="daypill">Сегодня</span>
+              <div class="bub in">Ты уже дома?</div>
+              <div class="bub out">Почти, буду через 5 минут</div>
               <div class="bub in" id="hA">Скинь код от подъезда?</div>
               <div class="slot">
                 <div class="typing" id="hT" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -526,37 +549,6 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
       <span>Сквозное шифрование</span><span>Каналы</span><span>Темы в группах</span><span>Видеозвонки</span><span>Живые аватарки</span><span>Свои стикеры</span><span>Исчезающие сообщения</span><span>Поиск по всем чатам</span><span>Истории на 24 часа</span><span>Достижения</span><span>Голосовые</span><span>Режим невидимки</span>
     </div>
   </div>
-
-  <section id="gallery">
-    <div class="wrap">
-      <div class="head" data-reveal>
-        <h2>Так выглядит Clooma</h2>
-        <p class="lead">Настоящие экраны приложения. Тёмное жидкое стекло, большие слова и ничего лишнего.</p>
-      </div>
-    </div>
-    <div class="gal" id="gal">
-        <figure class="shot" style="--i:0">
-          <div class="frame"><img src="shots/chats.jpg" width="600" height="1298" alt="Экран Clooma: чаты" loading="lazy" decoding="async"></div>
-          <figcaption><b>Чаты</b><span>Каждый разговор в своей стеклянной капсуле</span></figcaption>
-        </figure>
-        <figure class="shot" style="--i:1">
-          <div class="frame"><img src="shots/chat.jpg" width="600" height="1298" alt="Экран Clooma: переписка" loading="lazy" decoding="async"></div>
-          <figcaption><b>Переписка</b><span>Шифрование включается само</span></figcaption>
-        </figure>
-        <figure class="shot" style="--i:2">
-          <div class="frame"><img src="shots/stories.jpg" width="600" height="1298" alt="Экран Clooma: истории" loading="lazy" decoding="async"></div>
-          <figcaption><b>Истории</b><span>Живут 24 часа и исчезают</span></figcaption>
-        </figure>
-        <figure class="shot" style="--i:3">
-          <div class="frame"><img src="shots/calls.jpg" width="600" height="1298" alt="Экран Clooma: звонки" loading="lazy" decoding="async"></div>
-          <figcaption><b>Звонки</b><span>Быстрый вызов и статистика</span></figcaption>
-        </figure>
-        <figure class="shot" style="--i:4">
-          <div class="frame"><img src="shots/profile.jpg" width="600" height="1298" alt="Экран Clooma: профиль" loading="lazy" decoding="async"></div>
-          <figcaption><b>Профиль</b><span>Виджеты и медали</span></figcaption>
-        </figure>
-    </div>
-  </section>
 
   <section id="story">
     <div class="story-stage" id="stageStory">
