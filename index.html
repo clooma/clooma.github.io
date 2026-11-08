@@ -6,16 +6,16 @@
 <meta name="theme-color" content="#EDF0F6">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Clooma">
-<meta property="og:description" content="Мессенджер со сквозным шифрованием чатов, звонками, голосовыми и исчезающими сообщениями.">
+<meta property="og:description" content="Мессенджер со сквозным шифрованием: чаты, группы и каналы, звонки, истории, голосовые и свои стикеры.">
 <link rel="icon" href="icon-192.png">
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Clooma</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Clooma: мессенджер со сквозным шифрованием чатов, звонками, голосовыми и исчезающими сообщениями.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap">
+<meta name="description" content="Clooma: мессенджер со сквозным шифрованием. Чаты, группы и каналы, звонки, истории, голосовые и свои стикеры.">
 <style>
+@font-face{font-family:"Onest";font-style:normal;font-weight:100 900;font-display:swap;src:url(onest-cyrillic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Onest";font-style:normal;font-weight:100 900;font-display:swap;src:url(onest-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
 /* Layout: the app's own bright Liquid Glass. Pale moving light (WebGL) sits behind everything,
    real glass panels float over it, and one deep navy panel holds the cipher demo for contrast.
    Loud moments: the headline decrypting on load and the pinned phone story. The rest stays calm. */
@@ -334,6 +334,23 @@ h1 em { font-style: normal; color: var(--ink); }
 .more { margin-top: 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .more li:first-child { font-weight: 700; margin-right: 6px; }
 .more .chip { font-weight: 500; }
+.liveav { width: 92px; height: 92px; border-radius: 50%; padding: 4px; background: conic-gradient(var(--solid), #7a5cff, #ff5ca8, var(--solid)); animation: cl-spin 6s linear infinite; }
+.liveav i { display: block; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0 12%, transparent 13%), linear-gradient(160deg, color-mix(in srgb, var(--solid) 55%, #fff), var(--solid)); animation: cl-spin 6s linear infinite reverse; }
+.stk3 { display: flex; gap: 10px; }
+.stk3 i { width: 58px; height: 58px; border-radius: 18px; background: linear-gradient(150deg, color-mix(in srgb, var(--solid) 60%, #fff), var(--solid)); transform: rotate(-6deg); box-shadow: 0 8px 18px rgba(30, 50, 90, .16); }
+.stk3 i:nth-child(2) { background: linear-gradient(150deg, #ffb35c, #ff5c8a); transform: rotate(4deg) translateY(-6px); }
+.stk3 i:nth-child(3) { background: linear-gradient(150deg, #7ce0c3, #2a9d8f); transform: rotate(-2deg); }
+.medals { display: flex; gap: 8px; }
+.medals i { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(160deg, color-mix(in srgb, var(--solid) 55%, #fff), var(--solid)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5); }
+.medals i.off { background: var(--line); box-shadow: none; }
+.chip.on { background: var(--solid); color: #fff; border-color: transparent; }
+.swipe { position: relative; display: flex; align-items: center; gap: 12px; }
+.swipe .b { padding: 10px 14px; border-radius: 18px; background: #fff; border: 1px solid var(--line); font-weight: 600; animation: cl-pull 3.2s ease-in-out infinite; }
+.swipe .r { font-size: 13px; font-weight: 700; color: var(--solid); animation: cl-hint 3.2s ease-in-out infinite; }
+@keyframes cl-spin { to { transform: rotate(360deg); } }
+@keyframes cl-pull { 0%, 20%, 80%, 100% { transform: none; } 45%, 60% { transform: translateX(-26px); } }
+@keyframes cl-hint { 0%, 25%, 80%, 100% { opacity: .2; } 45%, 60% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .liveav, .liveav i, .swipe .b, .swipe .r { animation: none; } }
 @media (max-width: 900px) { .tile, .tile.w3 { grid-column: span 3; } .tile.w4 { grid-column: span 6; } }
 @media (max-width: 600px) { .tile, .tile.w3, .tile.w4 { grid-column: span 6; } }
 
@@ -442,7 +459,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
         </div>
         <ul class="facts" data-in>
           <li><b>Без номера</b> телефона и почты</li>
-          <li><b>До 100</b> человек в группе</li>
+          <li><b>Каналы</b> и группы до 100 человек</li>
           <li><b>RU, EN, IT</b> в интерфейсе</li>
         </ul>
       </div>
@@ -484,7 +501,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
 
   <div class="marquee" aria-hidden="true">
     <div class="track" id="track">
-      <span>Сквозное шифрование</span><span>Шифрование групп</span><span>Видеозвонки</span><span>Исчезающие сообщения</span><span>Голосовые</span><span>Режим невидимки</span><span>Истории на 24 часа</span><span>Опросы</span><span>Стикеры</span>
+      <span>Сквозное шифрование</span><span>Каналы</span><span>Темы в группах</span><span>Видеозвонки</span><span>Живые аватарки</span><span>Свои стикеры</span><span>Исчезающие сообщения</span><span>Поиск по всем чатам</span><span>Истории на 24 часа</span><span>Достижения</span><span>Голосовые</span><span>Режим невидимки</span>
     </div>
   </div>
 
@@ -497,7 +514,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
             <button class="scene-item on" type="button" data-i="0"><span class="rail"><i></i></span><span><b>Текст запирается на устройстве</b><span class="body"><p>Сообщение шифруется до отправки. Ключ знают только участники чата, сервер получает набор символов. Так работают и личные чаты, и группы.</p></span></span></button>
             <button class="scene-item" type="button" data-i="1"><span class="rail"><i></i></span><span><b>Сообщения исчезают сами</b><span class="body"><p>Поставь таймер: 5 секунд, 30 секунд, 1 минута или 1 час. После прочтения сообщение удалится у обоих.</p></span></span></button>
             <button class="scene-item" type="button" data-i="2"><span class="rail"><i></i></span><span><b>Звонки идут напрямую</b><span class="body"><p>Аудио- и видеозвонки соединяют ваши устройства напрямую. Кнопки находятся в шапке личного чата.</p></span></span></button>
-            <button class="scene-item" type="button" data-i="3"><span class="rail"><i></i></span><span><b>Голосовые на любой скорости</b><span class="body"><p>Запись до 2 минут. Слушай на скорости 1×, 1.5× или 2×.</p></span></span></button>
+            <button class="scene-item" type="button" data-i="3"><span class="rail"><i></i></span><span><b>Голосовые на любой скорости</b><span class="body"><p>Запись до 2 минут. Слушай на скорости 1×, 1.5× или 2×. Прервёшься, и голосовое продолжится с того же места.</p></span></span></button>
             <button class="scene-item" type="button" data-i="4"><span class="rail"><i></i></span><span><b>Тебя можно не найти</b><span class="body"><p>В режиме невидимки тебя нет в поиске по тегу и имени. Написать могут только те, с кем уже есть переписка.</p></span></span></button>
           </div>
           <div class="dots" id="dots"></div>
@@ -632,17 +649,57 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
             <p>Текст, фото и голосовые исчезают у обоих.</p>
             <div class="chips"><span class="chip">5 с</span><span class="chip">30 с</span><span class="chip">1 мин</span><span class="chip">1 ч</span></div>
           </article>
+          <article class="tile w3 glass">
+            <div class="mark"><svg class="i" aria-hidden="true"><use href="#i-group"/></svg></div>
+            <h3>Каналы и темы</h3>
+            <p>Канал читают все, а пишут только авторы. В группе можно включить темы, чтобы разговоры не смешивались.</p>
+            <div class="chips"><span class="chip on">Общее</span><span class="chip">Домашка</span><span class="chip">Мемы</span><span class="chip">Поездка</span></div>
+          </article>
+          <article class="tile w3 glass">
+            <div class="mark"><svg class="i" aria-hidden="true"><use href="#i-video"/></svg></div>
+            <h3>Живые аватарки</h3>
+            <p>Три секунды видео без звука вместо фото. Играют, когда кто-то открывает твой профиль.</p>
+            <div class="viz" aria-hidden="true"><div class="liveav"><i></i></div></div>
+          </article>
+          <article class="tile glass">
+            <h3>Свои стикеры</h3>
+            <p>Собери набор из своих картинок. Друг добавит его себе в пару нажатий.</p>
+            <div class="viz" aria-hidden="true"><div class="stk3"><i></i><i></i><i></i></div></div>
+          </article>
+          <article class="tile glass">
+            <h3>Достижения</h3>
+            <p>Двенадцать медалей в профиле: от первого сообщения до своего канала.</p>
+            <div class="viz" aria-hidden="true"><div class="medals"><i></i><i></i><i></i><i class="off"></i><i class="off"></i></div></div>
+          </article>
+          <article class="tile glass">
+            <div class="mark"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></div>
+            <h3>Поиск по всем чатам</h3>
+            <p>Находит слово в любой переписке. Сообщения расшифровываются только на твоём устройстве.</p>
+          </article>
+          <article class="tile w3 glass">
+            <h3>Виджеты профиля</h3>
+            <p>До шести блоков: что слушаешь, во что играешь, что читаешь, твоя цель. Порядок выбираешь сам.</p>
+            <div class="chips"><span class="chip">Слушаю</span><span class="chip">Играю</span><span class="chip">Читаю</span><span class="chip">Цель</span></div>
+          </article>
+          <article class="tile w3 glass">
+            <h3>Ответ свайпом</h3>
+            <p>Потяни сообщение влево, и оно станет ответом. Реакции разлетаются и отскакивают от сообщений.</p>
+            <div class="viz" aria-hidden="true"><div class="swipe"><span class="b">Идём в кино?</span><span class="r">Ответить</span></div></div>
+          </article>
         </div>
         <ul class="more" data-reveal>
           <li>Ещё в Clooma:</li>
           <li class="chip">Заметки для себя</li>
           <li class="chip">Опросы в группах</li>
-          <li class="chip">Рисованные стикеры</li>
+          <li class="chip">Ссылки-приглашения</li>
+          <li class="chip">Значки в группах</li>
+          <li class="chip">Стикеры</li>
           <li class="chip">Папки чатов</li>
           <li class="chip">Статусы</li>
           <li class="chip">Поиск по переписке</li>
           <li class="chip">Архив чатов</li>
           <li class="chip">Несколько аккаунтов</li>
+          <li class="chip">Режим экономии для старых телефонов</li>
         </ul>
       </div>
     </section>
@@ -660,6 +717,8 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
             <tr><th scope="row">Фото и голосовые в личных чатах</th><td><span class="state on">Зашифрованы</span></td><td>Работают так же, как личные сообщения.</td></tr>
             <tr><th scope="row">Звонки</th><td><span class="state on">Напрямую</span></td><td>Соединяют устройства напрямую. Пока у собеседника должна быть открыта Clooma.</td></tr>
             <tr><th scope="row">Группы</th><td><span class="state on">Зашифрованы</span></td><td>Сообщения, фото, голосовые, опросы и стикеры шифруются на устройстве. Название группы и список участников видны серверу.</td></tr>
+            <tr><th scope="row">Каналы и темы</th><td><span class="state on">Зашифрованы</span></td><td>Посты шифруются так же, как в группах. Названия канала и тем видны серверу.</td></tr>
+            <tr><th scope="row">Живые аватарки, стикеры, виджеты, достижения</th><td><span class="state open">Открыты</span></td><td>Видны всем в Clooma, как фото профиля.</td></tr>
             <tr><th scope="row">Истории и профиль</th><td><span class="state open">Открыты</span></td><td>Истории видны всем в Clooma 24 часа. Поле «О себе» тоже видят все.</td></tr>
           </tbody>
         </table>
@@ -729,6 +788,18 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
             <p>Профиль исчезнет, а тег снова станет свободным. Уже отправленные сообщения останутся у собеседников.</p>
           </details>
           <details>
+            <summary>Как позвать друзей в группу?</summary>
+            <p>Открой список участников и нажми «Ссылка-приглашение». Кто получит ссылку, сможет вступить сам. Если ссылка ушла не туда, её можно сбросить.</p>
+          </details>
+          <details>
+            <summary>Почему не приходят уведомления?</summary>
+            <p>В приложении для Android открой Настройки, затем «Проверить уведомления». Clooma покажет, что мешает: разрешение, канал уведомлений или экономия батареи.</p>
+          </details>
+          <details>
+            <summary>Clooma тормозит на старом телефоне. Что делать?</summary>
+            <p>Открой Настройки, затем Оформление, и в «Качестве эффектов» выбери «Экономия». Стекло станет проще, а приложение быстрее. На слабых телефонах это включается само.</p>
+          </details>
+          <details>
             <summary>Как ограничить, кто может мне писать?</summary>
             <p>В настройках приватности можно разрешить сообщения только знакомым, скрыть время в сети, отключить поиск по тегу или включить режим невидимки.</p>
           </details>
@@ -748,7 +819,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
 
 <footer>
   <div class="wrap">
-    <span>Clooma 3.0</span>
+    <span>Clooma 3.6</span>
     <a href="https://clooma-1ed28.web.app/">Открыть приложение</a>
   </div>
 </footer>
@@ -758,9 +829,16 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
   <button type="button" id="motionOn">Включить анимации</button>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
+(function () {
+  var done = false, go = function () { if (done) return; done = true; window.cloomaBoot(); };
+  var add = function (src, next) { var t = document.createElement('script'); t.src = src; t.onload = next; t.onerror = go; document.head.appendChild(t); };
+  window.addEventListener('DOMContentLoaded', function () {
+    add('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', function () { add('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js', go); });
+    setTimeout(go, 2500);
+  });
+})();
+window.cloomaBoot = function () {
 (function () {
   var root = document.documentElement;
   var $ = function (id) { return document.getElementById(id); };
@@ -1155,6 +1233,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
     });
   }
 })();
+};
 </script>
 </body>
 </html>
