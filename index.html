@@ -334,6 +334,27 @@ h1 em { font-style: normal; color: var(--ink); }
 .more { margin-top: 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .more li:first-child { font-weight: 700; margin-right: 6px; }
 .more .chip { font-weight: 500; }
+/* gallery of real app screens: a fan on wide screens, a swipeable row on phones */
+#gallery { padding: 110px 0 30px; }
+.gal { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 30px max(20px, calc(50vw - 590px)) 50px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.gal::-webkit-scrollbar { display: none; }
+.shot { flex: none; width: 236px; margin: 0; scroll-snap-align: center; text-align: center; transition: transform .6s cubic-bezier(.2, .9, .25, 1.05); }
+.shot .frame { position: relative; padding: 7px; border-radius: 40px; background: linear-gradient(160deg, #2a3140, #0b0e15 60%, #1d2330); box-shadow: 0 40px 70px -30px rgba(15, 30, 70, .55), 0 2px 0 rgba(255, 255, 255, .6) inset, 0 0 0 1px rgba(255, 255, 255, .5); }
+.shot .frame::after { content: ""; position: absolute; inset: 7px; border-radius: 33px; pointer-events: none; background: linear-gradient(125deg, rgba(255, 255, 255, .18), transparent 32%); }
+.shot img { display: block; width: 100%; height: auto; border-radius: 33px; }
+.shot figcaption { margin-top: 18px; }
+.shot b { display: block; font-size: 18px; font-weight: 800; letter-spacing: -.02em; }
+.shot figcaption span { display: block; margin-top: 2px; color: var(--muted); font-size: 14px; }
+@media (min-width: 1180px) {
+  .gal { justify-content: center; overflow: visible; padding-top: 50px; }
+  .shot:nth-child(1) { transform: translateY(46px) rotate(-7deg); }
+  .shot:nth-child(2) { transform: translateY(12px) rotate(-3deg); }
+  .shot:nth-child(3) { transform: translateY(-6px) scale(1.06); z-index: 2; }
+  .shot:nth-child(4) { transform: translateY(12px) rotate(3deg); }
+  .shot:nth-child(5) { transform: translateY(46px) rotate(7deg); }
+  .shot:hover { transform: translateY(-18px) scale(1.08); z-index: 3; }
+}
+@media (max-width: 600px) { #gallery { padding-top: 80px; } .shot { width: 72vw; max-width: 270px; } }
 .liveav { width: 92px; height: 92px; border-radius: 50%; padding: 4px; background: conic-gradient(var(--solid), #7a5cff, #ff5ca8, var(--solid)); animation: cl-spin 6s linear infinite; }
 .liveav i { display: block; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0 12%, transparent 13%), linear-gradient(160deg, color-mix(in srgb, var(--solid) 55%, #fff), var(--solid)); animation: cl-spin 6s linear infinite reverse; }
 .stk3 { display: flex; gap: 10px; }
@@ -439,6 +460,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
     <a href="#story">Как это работает</a>
     <a href="#features">Возможности</a>
     <a href="#privacy">Приватность</a>
+    <a href="#gallery">Как выглядит</a>
     <a href="#install">Установка</a>
     <a href="#faq">Вопросы</a>
   </nav>
@@ -504,6 +526,37 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
       <span>Сквозное шифрование</span><span>Каналы</span><span>Темы в группах</span><span>Видеозвонки</span><span>Живые аватарки</span><span>Свои стикеры</span><span>Исчезающие сообщения</span><span>Поиск по всем чатам</span><span>Истории на 24 часа</span><span>Достижения</span><span>Голосовые</span><span>Режим невидимки</span>
     </div>
   </div>
+
+  <section id="gallery">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <h2>Так выглядит Clooma</h2>
+        <p class="lead">Настоящие экраны приложения. Тёмное жидкое стекло, большие слова и ничего лишнего.</p>
+      </div>
+    </div>
+    <div class="gal" id="gal">
+        <figure class="shot" style="--i:0">
+          <div class="frame"><img src="shots/chats.jpg" width="600" height="1298" alt="Экран Clooma: чаты" loading="lazy" decoding="async"></div>
+          <figcaption><b>Чаты</b><span>Каждый разговор в своей стеклянной капсуле</span></figcaption>
+        </figure>
+        <figure class="shot" style="--i:1">
+          <div class="frame"><img src="shots/chat.jpg" width="600" height="1298" alt="Экран Clooma: переписка" loading="lazy" decoding="async"></div>
+          <figcaption><b>Переписка</b><span>Шифрование включается само</span></figcaption>
+        </figure>
+        <figure class="shot" style="--i:2">
+          <div class="frame"><img src="shots/stories.jpg" width="600" height="1298" alt="Экран Clooma: истории" loading="lazy" decoding="async"></div>
+          <figcaption><b>Истории</b><span>Живут 24 часа и исчезают</span></figcaption>
+        </figure>
+        <figure class="shot" style="--i:3">
+          <div class="frame"><img src="shots/calls.jpg" width="600" height="1298" alt="Экран Clooma: звонки" loading="lazy" decoding="async"></div>
+          <figcaption><b>Звонки</b><span>Быстрый вызов и статистика</span></figcaption>
+        </figure>
+        <figure class="shot" style="--i:4">
+          <div class="frame"><img src="shots/profile.jpg" width="600" height="1298" alt="Экран Clooma: профиль" loading="lazy" decoding="async"></div>
+          <figcaption><b>Профиль</b><span>Виджеты и медали</span></figcaption>
+        </figure>
+    </div>
+  </section>
 
   <section id="story">
     <div class="story-stage" id="stageStory">
